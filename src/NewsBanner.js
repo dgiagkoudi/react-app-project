@@ -13,41 +13,19 @@ export default function NewsBanner() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentNewsIndex(prev => (prev + 1) % newsItems.length);
-    }, 5000); // αλλάζουμε μήνυμα κάθε 5 δευτερόλεπτα
-
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div
+      className="news-banner"
       role="alert"
       aria-live="assertive"
-      style={{
-        top: 0,
-        left: 0,
-        backgroundImage: "url('/banblack (1).jpg')", // apo public folder
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        color: "#ffffffff",
-        fontWeight: "bold",
-        padding: "12px 15px",
-        fontSize: "1.2rem",
-        borderRadius: 0,
-        textAlign: "center",
-        boxShadow: "0 0 10px #ff0000",
-        userSelect: "none",
-        marginBottom: 20,
-        whiteSpace: "nowrap",
-        overflow: "hidden",
-        zIndex: 9999
-      }}
     >
       <div
         key={currentNewsIndex}
-        style={{
-          animation: "flash 1.5s ease-in-out",
-        }}
+        style={{ animation: "flash 1.5s ease-in-out" }}
       >
         {newsItems[currentNewsIndex]}
       </div>
@@ -60,5 +38,4 @@ export default function NewsBanner() {
       `}</style>
     </div>
   );
-  
 }

@@ -34,13 +34,14 @@ export default function SurvivorChat() {
        <h2 style={{ marginBottom: 12 }}>Chat with the Survivors</h2>
 
       <div
+        className="chat-container"
         style={{
           backgroundImage: "url('/zoumpi4.jpg')", // από public folder
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           height: 600,
-          width: 580,
+          width: "100%",
           borderRadius: 8,
           padding: 12,
           overflowY: "auto",

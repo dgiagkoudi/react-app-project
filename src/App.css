@@ -21,6 +21,54 @@ body {
   color: #df2525;
 }
 
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.news-banner {
+  position: relative;
+  top: 0;
+  left: 0;
+  background-image: url('/banblack (1).jpg'); /* εικόνα background */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 15px;
+  font-size: 1.2rem;
+  border-radius: 0;
+  text-align: center;
+  box-shadow: 0 0 10px #ff0000;
+  user-select: none;
+  margin-bottom: 20px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-wrap: break-word;
+  word-break: break-word;
+
+  z-index: 9999;
+}
+
+/* Media query για κινητά: επιτρέπει wrap και μικραίνει το font */
+@media (max-width: 600px) {
+  .news-banner {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    font-size: 1rem;
+    padding: 10px 12px;
+  }
+}
+
+/* Εφέ hover για όλα τα κουμπιά */
 button {
   background-color: #ffffff;
   color: rgb(0, 0, 0);
@@ -40,11 +88,17 @@ button:focus {
   outline: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Στυλ για το container του chat ώστε να έχει περιορισμένο ύψος και scroll */
+.chat-container {
+  max-height: 600px; /* για desktop */
+  overflow-y: auto;
+  width: 100%;
+  max-width: 580px;
+  margin: auto;
+}
+
+@media (max-width: 600px) {
+  .chat-container {
+    max-height: 300px;
   }
 }
