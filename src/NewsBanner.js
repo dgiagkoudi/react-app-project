@@ -31,6 +31,7 @@ export default function NewsBanner() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        marginBottom: 20, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
       }}
     >
       <div
