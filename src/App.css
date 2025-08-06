@@ -34,12 +34,7 @@ body {
   position: relative;
   top: 0;
   left: 0;
-  background-image: "url('/banblack.jpg')"; /* εικόνα background */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  color: #fff;
+  color: #ffffff;
   font-weight: bold;
   padding: 12px 15px;
   font-size: 1.2rem;
@@ -48,7 +43,6 @@ body {
   box-shadow: 0 0 10px #ff0000;
   user-select: none;
   margin-bottom: 20px;
-
   overflow: hidden;
   white-space: nowrap;
   overflow-wrap: break-word;
