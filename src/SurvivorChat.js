@@ -30,7 +30,7 @@ export default function SurvivorChat() {
   }, [messages]);
 
   return (
-    <section style={{ maxWidth: 600, margin: "auto", padding: 20, color: "#eee", borderRadius: 8 }}>
+    <section style={{ maxWidth: "100%", margin: "auto", padding: 20, color: "#eee", borderRadius: 8 }}>
        <h2 style={{ marginBottom: 12 }}>Chat with the Survivors</h2>
 
       <div

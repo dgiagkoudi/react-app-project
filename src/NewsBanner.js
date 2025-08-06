@@ -35,7 +35,7 @@ export default function NewsBanner() {
     >
       <div
         key={currentNewsIndex}
-        style={{ animation: "flash 1.5s ease-in-out" }}
+        style={{ animation: "flash 0.5s ease-in-out" }}
       >
         {newsItems[currentNewsIndex]}
       </div>
