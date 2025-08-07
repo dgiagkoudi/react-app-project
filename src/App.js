@@ -7,6 +7,7 @@ import CommunityBoard from './CommunityBoard';
 import KitBuilder from './KitBuilder';
 import SurvivorChat from './SurvivorChat';
 import NewsBanner from './NewsBanner';
+import NewsArticlesPage from './NewsArticlesPage';
 import HonorableMentionBlog from './HonorableMentionBlog';
 import Footer from './Footer';
 
@@ -64,6 +65,7 @@ function App() {
           <Route path="/kit-builder" element={<KitBuilder user={user} />} />
           <Route path="/survivor-chat" element={<SurvivorChat />} />
           <Route path="/honorable-mention" element={<HonorableMentionBlog />} />
+          <Route path="/news-articles" element={<NewsArticlesPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         

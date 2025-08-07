@@ -36,9 +36,9 @@ export default function SurvivorChat() {
       <div
         className="chat-container"
         style={{
-          backgroundImage: "url('/zoumpi4.jpg')", // από public folder
+          backgroundImage: "url('/zoumpi2.jpg')", // από public folder
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "top",
           backgroundRepeat: "no-repeat",
           height: 600,
           width: "100%",
@@ -52,8 +52,9 @@ export default function SurvivorChat() {
           lineHeight: 1.4,
         }}
       >
+      <div className="chat-message">
         {messages.length === 0 && (
-          <p style={{ fontStyle: "italic", color: "#ffffffff" }}>
+          <p style={{ fontStyle: "italic" }}>
             No messages yet. Try saying something...
           </p>
         )}
@@ -70,6 +71,7 @@ export default function SurvivorChat() {
             {msg.text}
           </div>
         ))}
+      </div>
         <div ref={chatEndRef} />
       </div>
 

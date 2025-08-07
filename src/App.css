@@ -44,7 +44,6 @@ body {
   user-select: none;
   margin-bottom: 20px;
   overflow: hidden;
-  white-space: nowrap;
   overflow-wrap: break-word;
   word-break: break-word;
 
@@ -95,4 +94,14 @@ button:focus {
   .chat-container {
     max-height: 300px;
   }
+}
+
+.chat-message {
+  background-color: rgba(0, 0, 0, 0.8); 
+  color: #fff; 
+  padding: 8px 12px; /* εσωτερικό περιθώριο ώστε το κείμενο να μην κολλάει στο πλαίσιο */
+  border-radius: 6px; 
+  max-width: 80%; 
+  word-wrap: break-word; /* να σπάει σε νέες γραμμές */
+  display: inline-block; 
 }

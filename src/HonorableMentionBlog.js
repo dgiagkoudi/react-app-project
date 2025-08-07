@@ -20,31 +20,6 @@ export default function HonorableMentionBlog() {
       </h2>
 
       <section 
-        style={{ 
-          marginBottom: 20,
-          display: "flex",
-          alignItems: "center",
-          gap: 16,
-          backgroundColor: "#222",
-          padding: 12,
-          borderRadius: 8,
-        }}
-      >
-        <img src="/KATAXNIA.png" alt="Kataxnia Band"
-          style={{ width: 120, height: 120, objectFit: "cover", borderRadius: 8  }}
-        />
-        <div>
-          <h3 style={{ borderBottom: "2px solid #ffffffff", paddingBottom: 6 }}>
-            Top Καλλιτέχνης: <span style={{ color: "#fff" }}>ΚΑΤΑΧΝΙΑ</span>
-          </h3>
-          <p>
-            Οι ΚΑΤΑΧΝΙΑ είναι μια πανκ μπάντα με εμβληματικό ήχο και αιχμηρούς
-            στίχους. Η μουσική τους συνοδεύει κάθε ιστορία αντίστασης ή επιβίωσης στο soundtrack μιας σκοτεινής καθημερινότητας.
-          </p>
-        </div>
-      </section>
-
-      <section 
         style={{ marginBottom: 20,
           display: "flex",
           alignItems: "center",
@@ -60,10 +35,11 @@ export default function HonorableMentionBlog() {
         />
         <div>
           <h3 style={{ borderBottom: "2px solid #ffffffff", paddingBottom: 6 }}>
-            Top Video Game: <span style={{ color: "#fff" }}>Silent Hill 2</span>
+            Top Video Game: <span style={{ color: "#fff" }}>Silent Hill 2 Remake</span>
           </h3>
           <p>
-            Το Silent Hill 2 παραμένει σταθμός του ψυχολογικού horror και τέλειο υπόβαθρο για εμπειρίες που συνδυάζουν αγωνία, ατμόσφαιρα και σκοτεινή αφήγηση.
+            Το remake του Silent Hill 2, που κυκλοφόρησε τον Οκτώβριο του 2024, έχει πουλήσει πάνω από 2 εκατομμύρια αντίτυπα παγκοσμίως, με πάνω 
+            από 1 εκατομμύριο μόνο στις πρώτες 3 μέρες. Η υψηλής ποιότητας ατμόσφαιρα και η εξελιγμένη αφήγηση το κρατούν σταθερά αγαπημένο των παικτών.
           </p>
         </div>
       </section>
@@ -87,8 +63,34 @@ export default function HonorableMentionBlog() {
             Top Βιβλίο: <span style={{ color: "#fff" }}>Η Μεταμόρφωση του Franz Kafka</span>
           </h3>
           <p>
-            Η «Μεταμόρφωση» του Κάφκα είναι ένα αριστούργημα του υπαρξισμού, που εξερευνά την αποξένωση, τον παραλογισμό της ζωής και τη μοναξιά, 
-            κλασικό ανάγνωσμα για σώματα και ψυχές που ζουν στα όρια μιας απροσδιόριστης πραγματικότητας.
+            Η «Μεταμόρφωση» έχει πουλήσει πάνω από 10 εκατομμύρια αντίτυπα και διαβάζεται καθημερινά από χιλιάδες σε όλο τον κόσμο, 
+            αποτελώντας κλασικό ορόσημο στην παγκόσμια λογοτεχνία.
+          </p>
+        </div>
+      </section>
+
+      <section 
+        style={{ 
+          marginBottom: 20,
+          display: "flex",
+          alignItems: "center",
+          gap: 16,
+          backgroundColor: "#222",
+          padding: 12,
+          borderRadius: 8,
+        }}
+      >
+        <img src="/KATAXNIA.png" alt="Kataxnia Band"
+          style={{ width: 120, height: 120, objectFit: "cover", borderRadius: 8  }}
+        />
+        <div>
+          <h3 style={{ borderBottom: "2px solid #ffffffff", paddingBottom: 6 }}>
+            Top Καλλιτέχνης: <span style={{ color: "#fff" }}>ΚΑΤΑΧΝΙΑ</span>
+          </h3>
+          <p>
+            Η punk μπάντα ΚΑΤΑΧΝΙΑ μετρά πάνω από 1 εκατομμύριο ψηφιακές ακροάσεις και η μουσική της ακούγεται από τα 
+            μπαλκόνια των πόλεων, με τους πολίτες να δηλώνουν ότι σχεδόν αποκλειστικά αυτήν ακούνε, αντικαθιστώντας άλλους καλλιτέχνες 
+            στο αστικό μουσικό τοπίο.
           </p>
         </div>
       </section>

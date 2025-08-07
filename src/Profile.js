@@ -2,34 +2,86 @@ import React, { useState, useEffect } from "react";
 
 export default function Profile({ user }) {
   const [bio, setBio] = useState("");
+  const [kitItems, setKitItems] = useState([]);
 
-  // Φορτώνουμε bio από localStorage κατά username
+  // Φόρτωση bio από localStorage ανά χρήστη
   useEffect(() => {
+    if (!user) return;
     const savedBio = localStorage.getItem(`profileBio_${user}`) || "";
     setBio(savedBio);
+
+    const savedKit = localStorage.getItem(`kit_${user}`);
+    if (savedKit) setKitItems(JSON.parse(savedKit));
+    else setKitItems([]);
   }, [user]);
 
+  // Αποθήκευση bio
   const saveBio = () => {
+    if (!user) return alert("Δεν υπάρχει χρήστης.");
     localStorage.setItem(`profileBio_${user}`, bio);
-    alert("Bio αποθηκεύτηκε!");
+    alert("Η ιστορία επιζώντα αποθηκεύτηκε!");
   };
 
   return (
-    <section>
-      <h2>Survivor Profile: {user}</h2>
-      <label>
-        <strong>Βιογραφικό / Ιστορία Επιζώντα:</strong>
+    <main style={{ 
+      maxWidth: 700, 
+      margin: "auto", 
+      padding: 20,  
+      color: "#ffffff" }}>
+      <h1 style={{ marginBottom: 30 }}>Προφίλ Επιζώντα: {user}</h1>
+
+      {/* Πλαίσιο kit */}
+      <section style={{
+        backgroundColor: "#222",
+        color: "#fff",
+        borderRadius: 8,
+        padding: 20,
+        boxShadow: "0 2px 8px rgba(0,0,0,0.4)",
+        marginBottom: 40
+      }}>
+        <h2 style={{ marginBottom: 15, borderBottom: "2px solid #cc0000", paddingBottom: 8 }}>Το kit σου</h2>
+        {kitItems.length === 0 ? (
+          <p style={{ fontStyle: "italic", color: "#666" }}>Το kit σου είναι άδειο.</p>
+        ) : (
+          <ul style={{ listStyle: "disc outside", paddingLeft: 20 }}>
+            {kitItems.map(item => (
+              <li key={item} style={{ marginBottom: 6 }}>{item}</li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      {/* Πλαίσιο βιογραφικού / ιστορίας */}
+      <section style={{
+        backgroundColor: "#222",
+        color: "#fff",
+        borderRadius: 8,
+        padding: 20,
+        boxShadow: "0 2px 8px rgba(0,0,0,0.4)"
+      }}>
+        <h2 style={{ marginBottom: 10, borderBottom: "2px solid #cc0000", paddingBottom: 6 }}>Ιστορία Επιζώντα</h2>
         <textarea
-          rows={6}
-          style={{ width: "100%", marginTop: 8 }}
+          rows={8}
+          style={{
+            width: "100%",
+            borderRadius: 6,
+            border: "none",
+            padding: 12,
+            fontSize: 16,
+            fontFamily: "inherit",
+            resize: "vertical",
+            boxSizing: "border-box",
+            backgroundColor: "#333",
+            color: "#fff"
+          }}
           placeholder="Πες μας την ιστορία σου..."
           value={bio}
           onChange={(e) => setBio(e.target.value)}
         ></textarea>
-      </label>
-      <button onClick={saveBio} style={{ marginTop: 10, padding: "8px 16px", cursor: "pointer" }}>
-        Αποθήκευση
-      </button>
-    </section>
+        <button
+          onClick={saveBio}>Αποθήκευση
+        </button>
+      </section>
+    </main>
   );
 }
