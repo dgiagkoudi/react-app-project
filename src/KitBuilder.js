@@ -113,11 +113,15 @@ export default function KitBuilder() {
                     border: "none",
                     color: "#000",
                     cursor: "pointer",
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: "bold",
                     padding: 0,
+                    marginLeft: 8,
+                    lineHeight: 1,
                   }}
+                  aria-label={`Αφαίρεσε ${item}`}
                 >
+                  ×
                 </button>
               </li>
             ))}

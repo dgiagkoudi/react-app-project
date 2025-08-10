@@ -15,7 +15,7 @@ export default function Footer() {
       <img
         src="/logofire.png" alt="Zombie Survivor Symbol"
         style={{
-          width: 100,
+          width: 130,
           objectFit: "cover"
         }}
       />
@@ -33,7 +33,6 @@ export default function Footer() {
           style={{ color: "#ffffffff", margin: "0 8px", textDecoration: 'underline' }}
           target="_blank" rel="noopener noreferrer"
         >GitHub</a>
-        |
       </nav>
       <div style={{ fontSize: 13, opacity: 0.75 }}>
         © {new Date().getFullYear()} Zombie Apocalypse Survivor Hub. <br />
