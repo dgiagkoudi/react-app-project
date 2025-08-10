@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { KitContext } from "./KitContext";
 
 export default function Profile({ user }) {
   const [bio, setBio] = useState("");
-  const [kitItems, setKitItems] = useState([]);
+  const { selectedItems } = useContext(KitContext);
 
   // Φόρτωση bio από localStorage ανά χρήστη
   useEffect(() => {
     if (!user) return;
     const savedBio = localStorage.getItem(`profileBio_${user}`) || "";
     setBio(savedBio);
+    }, [user]);
 
-    const savedKit = localStorage.getItem(`kit_${user}`);
-    if (savedKit) setKitItems(JSON.parse(savedKit));
-    else setKitItems([]);
-  }, [user]);
-
-  // Αποθήκευση bio
-  const saveBio = () => {
+  const saveBio = () => { // Αποθήκευση bio
     if (!user) return alert("Δεν υπάρχει χρήστης.");
     localStorage.setItem(`profileBio_${user}`, bio);
     alert("Η ιστορία επιζώντα αποθηκεύτηκε!");
@@ -30,8 +26,7 @@ export default function Profile({ user }) {
       color: "#ffffff" }}>
       <h1 style={{ marginBottom: 30 }}>Προφίλ Επιζώντα: {user}</h1>
 
-      {/* Πλαίσιο kit */}
-      <section style={{
+      <section style={{ // Πλαίσιο kit
         backgroundColor: "#222",
         color: "#fff",
         borderRadius: 8,
@@ -40,11 +35,11 @@ export default function Profile({ user }) {
         marginBottom: 40
       }}>
         <h2 style={{ marginBottom: 15, borderBottom: "2px solid #cc0000", paddingBottom: 8 }}>Το kit σου</h2>
-        {kitItems.length === 0 ? (
+        {selectedItems.length === 0 ? (
           <p style={{ fontStyle: "italic", color: "#666" }}>Το kit σου είναι άδειο.</p>
         ) : (
           <ul style={{ listStyle: "disc outside", paddingLeft: 20 }}>
-            {kitItems.map(item => (
+            {selectedItems.map(item => (
               <li key={item} style={{ marginBottom: 6 }}>{item}</li>
             ))}
           </ul>

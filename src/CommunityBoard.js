@@ -5,15 +5,32 @@ export default function CommunityBoard({ user }) {
   const [posts, setPosts] = useState([]);
   const [input, setInput] = useState("");
 
-  // Φορτώνουμε όλα τα posts (όλων των χρηστών) αλλά θα εμφανίσουμε tab ή απλά όλα
+  // Φόρτωση posts από localStorage κάθε φορά που αλλάζει ο χρήστης
   useEffect(() => {
     const stored = localStorage.getItem("communityPosts");
     if (stored) {
       setPosts(JSON.parse(stored));
+    } else {
+      setPosts([]);
     }
+  }, [user]); // Εξάρτηση από τον χρήστη ώστε να φορτώνει ξανά όταν αλλάζει
+
+  // Συγχρονισμός posts με αλλαγές σε άλλο tab ή παράθυρο
+  useEffect(() => {
+    const syncPosts = (event) => {
+      if (event.key === "communityPosts") {
+        if (event.newValue) {
+          setPosts(JSON.parse(event.newValue));
+        }
+      }
+    };
+    window.addEventListener("storage", syncPosts);
+    return () => {
+      window.removeEventListener("storage", syncPosts);
+    };
   }, []);
 
-  // Αποθήκευση στο localStorage
+  // Αποθήκευση posts στο localStorage
   const savePosts = (newPosts) => {
     localStorage.setItem("communityPosts", JSON.stringify(newPosts));
   };
@@ -41,7 +58,10 @@ export default function CommunityBoard({ user }) {
         <div
             style={{
                 backgroundImage: "url('/zoumpi4.jpg')", // από public folder
-                backgroundSize: "cover"
+                backgroundSize: "cover",
+                padding: 20,
+                minHeight: 400,
+                color: "#eee"
             }}
         >
     <h2>Community Board</h2>
@@ -60,13 +80,16 @@ export default function CommunityBoard({ user }) {
       {posts.length === 0 && <p>Κανένα μήνυμα ακόμα. Γίνε ο πρώτος επιζών που θα γράψει κάτι!</p>}
 
       <ul style={{ listStyle: "none", padding: 0 }}>
-        {posts.map(({ id, user: postUser, text, date }) => (
-          <li key={id} style={{ padding: 10, borderBottom: "1px solid #ccc" }}>
-            <strong>{postUser}</strong> <em style={{ color: "#666", fontSize: 12 }}>({new Date(date).toLocaleString()})</em>
-            <p style={{ marginTop: 5 }}>{text}</p>
-          </li>
-        ))}
-      </ul>
+          {posts.map(({ id, user: postUser, text, date }) => (
+            <li key={id} style={{ padding: 10, borderBottom: "1px solid #9c9c9cff", color: "#9c9c9cff" }}>
+              <strong>{postUser}</strong>{" "}
+              <em style={{ color: "#9c9c9cff", fontSize: 12 }}>
+                ({new Date(date).toLocaleString()})
+              </em>
+              <p style={{ marginTop: 5, color: "#eee" }}>{text}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

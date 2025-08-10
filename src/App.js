@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-ro
 import Profile from './Profile';
 import CommunityBoard from './CommunityBoard';
 import KitBuilder from './KitBuilder';
+import { KitProvider } from "./KitContext";
 import SurvivorChat from './SurvivorChat';
 import NewsBanner from './NewsBanner';
 import NewsArticlesPage from './NewsArticlesPage';
@@ -36,41 +37,40 @@ function App() {
 
   return (
     <Router>
-      <div style={{ maxWidth: 900, margin: "auto", padding: 20, backgroundColor: "#000", minHeight: "100vh", color: "#eee", fontFamily: "Arial, sans-serif" }}>
-        {/* Πάντα ορατό banner ως header */}
-        <header style={{ marginBottom: 20, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h1 style={{ margin: 0 }}>Zombie Apocalypse Survivor Hub</h1>
-          <div>
-            <span>Logged in as <strong>{user}</strong></span>{" "}
-            <button onClick={logout} style={{ cursor: "pointer", padding: "6px 12px", marginLeft: 10 }}>Logout</button>
-          </div>
-        </header>
+      <KitProvider user={user}>
+        <div style={{ maxWidth: 900, margin: "auto", padding: 20, backgroundColor: "#000", minHeight: "100vh", color: "#eee", fontFamily: "Arial, sans-serif"  /* Πάντα ορατό banner ως header */}}>
+          <header style={{ marginBottom: 20, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <h1 style={{ margin: 0 }}>Zombie Apocalypse Survivor Hub</h1>
+            <div>
+              <span>Logged in as <strong>{user}</strong></span>{" "}
+              <button onClick={logout} style={{ cursor: "pointer", padding: "6px 12px", marginLeft: 10 }}>Logout</button>
+            </div>
+          </header>
+          
+          <NewsBanner />
 
-        {/* News Banner σταθερό πάνω */}
-        <NewsBanner />
+          <nav style={{ marginBottom: 20 /* Navigation */ }}>
+            <Link to="/profile" style={{ marginRight: 15, color: "#eee", textDecoration: "underline" }}>Profile</Link>
+            <Link to="/kit-builder" style={{ marginRight: 15, color: "#eee", textDecoration: "underline" }}>Kit Builder</Link>
+            <Link to="/survivor-chat" style={{ marginRight: 15, color: "#eee", textDecoration: "underline" }}>Chat</Link>
+            <Link to="/honorable-mention" style={{ marginRight: 15, color: "#eee", textDecoration: "underline" }}>Honorable Mention</Link>
+            <Link to="/community" style={{ marginRight: 15, color: "#eee", textDecoration: "underline" }}>Community Board</Link>
+          </nav>
 
-        {/* Navigation */}
-        <nav style={{ marginBottom: 20 }}>
-          <Link to="/profile" style={{ marginRight: 15, color: "#eee", textDecoration: "underline" }}>Profile</Link>
-          <Link to="/kit-builder" style={{ marginRight: 15, color: "#eee", textDecoration: "underline" }}>Kit Builder</Link>
-          <Link to="/survivor-chat" style={{ marginRight: 15, color: "#eee", textDecoration: "underline" }}>Chat</Link>
-          <Link to="/honorable-mention" style={{ marginRight: 15, color: "#eee", textDecoration: "underline" }}>Honorable Mention</Link>
-          <Link to="/community" style={{ marginRight: 15, color: "#eee", textDecoration: "underline" }}>Community Board</Link>
-        </nav>
-
-        <Routes>
-          <Route path="/" element={<Navigate to="/profile" />} />
-          <Route path="/profile" element={<Profile user={user} />} />
-          <Route path="/community" element={<CommunityBoard user={user} />} />
-          <Route path="/kit-builder" element={<KitBuilder user={user} />} />
-          <Route path="/survivor-chat" element={<SurvivorChat />} />
-          <Route path="/honorable-mention" element={<HonorableMentionBlog />} />
-          <Route path="/news-articles" element={<NewsArticlesPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Navigate to="/profile" />} />
+            <Route path="/profile" element={<Profile user={user} />} />
+            <Route path="/community" element={<CommunityBoard user={user} />} />
+            <Route path="/kit-builder" element={<KitBuilder user={user} />} />
+            <Route path="/survivor-chat" element={<SurvivorChat />} />
+            <Route path="/honorable-mention" element={<HonorableMentionBlog />} />
+            <Route path="/news-articles" element={<NewsArticlesPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      </KitProvider>
     </Router>
     
   );
